@@ -22,9 +22,32 @@ public class Main {
 
             sets.add(createSet());
             Main.menu();
+        }
+        else if (choice == Menu.PRZEGLĄDAJ_ZESTAWY.getChoice()) {
+            System.out.println("Twoje zasoby");
+            showAllSets(sets);
+            scn.nextLine();
+            System.out.println("Wybierz zestaw");
+            String chosenSet = scn.next();
+            int chosen = 0;
+            if (sets.contains(chosenSet)) {
+                chosen = sets.indexOf(chosenSet);
+                sets.get(chosen);
+            }
+            System.out.println("Wybrano: " + sets.get(chosen));
+
+            scn.close();
+        }
 
     }
-}
+
+    private static void showAllSets(List sets) {
+        System.out.println(sets.size());
+        for (int i = 0; i < sets.size();) {
+            System.out.println(sets.get(i));
+            i++;
+        }
+    }
 
     private static FlashcardSet createSet() {
 
