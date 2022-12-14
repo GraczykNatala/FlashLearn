@@ -8,9 +8,27 @@ public class Main {
     private static List sets = new ArrayList<Flashcard>();
     public static void main(String[] args) {
 
+        createTest();
+        sets.add(createTest());
         menu();
 
 
+    }
+
+    private static FlashcardSet createTest() {
+        Flashcard t1 = new Flashcard("Take off", "Startować");
+        Flashcard t2 = new Flashcard("Aisle seat", "Miejsce od środka");
+        Flashcard t3 = new Flashcard("Hand luggage", "Bagaż podręczny");
+        Flashcard t4 = new Flashcard("Fasten the belt", "zapiąc pasy");
+        Flashcard t5 = new Flashcard("Duty-free shop", "sklep bezcłowy");
+        Flashcard t6 = new Flashcard("Board the plane", "Wejść na pokład");
+        Flashcard t7 = new Flashcard("Gate", "Bramka");
+        Flashcard t8 = new Flashcard("Departures board", "Tablica odlotów");
+        Flashcard t9 = new Flashcard("Check in", "zameldować się");
+        List testFC =  List.of(t1,t2,t3,t4,t5,t6,t7,t8,t9);
+        FlashcardSet testFcSet = new FlashcardSet("TestOne",  testFC);
+
+        return testFcSet;
     }
 
     private static void menu() {
