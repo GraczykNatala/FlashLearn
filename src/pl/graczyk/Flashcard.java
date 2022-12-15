@@ -1,8 +1,8 @@
 package pl.graczyk;
 
 public class Flashcard {
-    String text;
-    String meaning;
+    private String text;
+    private String meaning;
 
     public Flashcard(String text, String meaning) {
         this.text = text;

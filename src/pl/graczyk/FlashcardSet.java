@@ -4,8 +4,9 @@ import java.util.List;
 
 public class FlashcardSet {
 
-    String name;
-    List<Flashcard> n;
+    private  String name;
+    private List<Flashcard> n;
+
 
 
 
