@@ -45,15 +45,14 @@ public class Main {
             System.out.println("Twoje zasoby");
             showAllSets(sets);
             scn.nextLine();
-            System.out.println("Wybierz zestaw");
-            String chosenSet = scn.next();
-            int chosen = 0;
-            if (sets.contains(chosenSet)) {
-                chosen = sets.indexOf(chosenSet);
-                sets.get(chosen);
+            System.out.println("Wybierz zestaw (numer)");
+            int chosenSet = scn.nextInt();
+            if (sets.contains(sets.get(chosenSet))) {
+                System.out.println("Wybrano: " + sets.get(chosenSet));
+            } else {
+                System.out.println("Nie ma takiego zestawu");
             }
-            System.out.println("Wybrano: " + sets.get(chosen));
-
+            Main.menu();
             scn.close();
         }
 
@@ -62,7 +61,7 @@ public class Main {
     private static void showAllSets(List sets) {
         System.out.println(sets.size());
         for (int i = 0; i < sets.size();) {
-            System.out.println(sets.get(i));
+            System.out.println( i +  " " + sets.get(i));
             i++;
         }
     }
