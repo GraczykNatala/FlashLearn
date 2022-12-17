@@ -1,7 +1,9 @@
 package pl.graczyk;
 
 public enum Menu {
-    STWÓRZ_NOWY_ZESTAW(1), PRZEGLĄDAJ_ZESTAWY(2);
+    STWÓRZ_NOWY_ZESTAW(1),
+    PRZEGLĄDAJ_ZESTAWY(2),
+    WYJDŹ(3);
 
     private int choice;
 
@@ -11,6 +13,11 @@ public enum Menu {
 
     public int getChoice() {
         return choice;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString().toLowerCase().replace("_", " ");
     }
 }
 

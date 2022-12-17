@@ -30,6 +30,7 @@ public class Main {
     private static void menu() {
         System.out.println(Menu.STWÓRZ_NOWY_ZESTAW + " - " + Menu.STWÓRZ_NOWY_ZESTAW.getChoice());
         System.out.println(Menu.PRZEGLĄDAJ_ZESTAWY + " - " + Menu.PRZEGLĄDAJ_ZESTAWY.getChoice());
+        System.out.println(Menu.WYJDŹ + "- " + Menu.WYJDŹ.getChoice());
         Scanner scn = new Scanner(System.in);
         int choice = scn.nextInt();
         if (choice == Menu.STWÓRZ_NOWY_ZESTAW.getChoice() ) {
@@ -50,6 +51,8 @@ public class Main {
                 System.out.println("Nie ma takiego zestawu");
             }
             Main.menu();
+        }
+        else if (choice == Menu.WYJDŹ.getChoice()) {
             scn.close();
         }
 
