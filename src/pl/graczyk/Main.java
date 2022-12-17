@@ -1,21 +1,18 @@
 package pl.graczyk;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-    private static List sets = new ArrayList<Flashcard>();
+    private static Map<String, List<Flashcard> > FlashcardSets = new HashMap<>();
     public static void main(String[] args) {
 
         createTest();
-        sets.add(createTest());
         menu();
 
 
     }
 
-    private static FlashcardSet createTest() {
+    private static void createTest() {
         Flashcard t1 = new Flashcard("Take off", "Startować");
         Flashcard t2 = new Flashcard("Aisle seat", "Miejsce od środka");
         Flashcard t3 = new Flashcard("Hand luggage", "Bagaż podręczny");
@@ -26,9 +23,8 @@ public class Main {
         Flashcard t8 = new Flashcard("Departures board", "Tablica odlotów");
         Flashcard t9 = new Flashcard("Check in", "zameldować się");
         List testFC =  List.of(t1,t2,t3,t4,t5,t6,t7,t8,t9);
-        FlashcardSet testFcSet = new FlashcardSet("TestOne",  testFC);
+        FlashcardSets.put("testOne", testFC);
 
-        return testFcSet;
     }
 
     private static void menu() {
@@ -38,17 +34,18 @@ public class Main {
         int choice = scn.nextInt();
         if (choice == Menu.STWÓRZ_NOWY_ZESTAW.getChoice() ) {
 
-            sets.add(createSet());
+
+            createSet();
             Main.menu();
         }
         else if (choice == Menu.PRZEGLĄDAJ_ZESTAWY.getChoice()) {
             System.out.println("Twoje zasoby");
-            showAllSets(sets);
+            showAllSets(FlashcardSets);
             scn.nextLine();
-            System.out.println("Wybierz zestaw (numer)");
-            int chosenSet = scn.nextInt();
-            if (sets.contains(sets.get(chosenSet))) {
-                System.out.println("Wybrano: " + sets.get(chosenSet));
+            System.out.println("Wybierz zestaw");
+            String chosenSet = scn.next();
+            if (FlashcardSets.containsKey(chosenSet)) {
+                System.out.println("Wybrano: " + chosenSet + FlashcardSets.get(chosenSet));
             } else {
                 System.out.println("Nie ma takiego zestawu");
             }
@@ -58,22 +55,19 @@ public class Main {
 
     }
 
-    private static void showAllSets(List sets) {
-        System.out.println(sets.size());
-        for (int i = 0; i < sets.size();) {
-            System.out.println( i +  " " + sets.get(i));
-            i++;
-        }
+    private static void showAllSets(Map FlashcardSet) {
+        System.out.println(FlashcardSets.size());
+            System.out.println(FlashcardSets.keySet());
+
     }
 
-    private static FlashcardSet createSet() {
+    private static void createSet() {
 
         Scanner scn = new Scanner(System.in);
         System.out.println("Podaj nazwę nowego zestawu");
         String setName = scn.next();
-        ArrayList<Flashcard> n = new ArrayList<>();
-        FlashcardSet fs = new FlashcardSet(setName, n);
         System.out.println("Stworzono zestaw: " + setName );
+        ArrayList<Flashcard> n = new ArrayList<>();
         System.out.println("Ile elementów chcesz dodać?");
         int amount = scn.nextInt();
         List<Flashcard> l = new ArrayList<>();
@@ -83,8 +77,7 @@ public class Main {
         }
         FlashcardSet fcs = new FlashcardSet(setName,l );
         System.out.println(fcs);
-
-        return fcs;
+        FlashcardSets.put(setName, l);
     }
 
     private static Flashcard createFlashcard() {
