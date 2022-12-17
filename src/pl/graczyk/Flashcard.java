@@ -1,5 +1,7 @@
 package pl.graczyk;
 
+import java.util.Scanner;
+
 public class Flashcard {
     private String text;
     private String meaning;
@@ -8,6 +10,11 @@ public class Flashcard {
         this.text = text;
         this.meaning = meaning;
     }
+
+    public Flashcard() {
+
+    }
+
 
     public String getText() {
         return text;
@@ -29,6 +36,16 @@ public class Flashcard {
     public String toString() {
         return  text + "-" +
                 meaning;
+    }
+
+     Flashcard createFlashcard() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("podaj słowo");
+        String text = scn.next();
+        System.out.println("Podaj znaczenie");
+        String meaning = scn.next();
+        Flashcard fc = new Flashcard(text, meaning);
+        return fc;
     }
 }
 

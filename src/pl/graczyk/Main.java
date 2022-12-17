@@ -75,19 +75,11 @@ public class Main {
         int amount = scn.nextInt();
         List<Flashcard> l = new ArrayList<>();
         for (int i = 0; i < amount; ) {
-            l.add(i,createFlashcard());
+            Flashcard fc = new Flashcard();
+            l.add(i,fc.createFlashcard());
             i++;
         }
         FlashcardSets.put(setName, l);
     }
 
-    private static Flashcard createFlashcard() {
-        Scanner scn = new Scanner(System.in);
-        System.out.println("podaj słowo");
-        String text = scn.next();
-        System.out.println("Podaj znaczenie");
-        String meaning = scn.next();
-        Flashcard fc = new Flashcard(text, meaning);
-        return fc;
-    }
 }
