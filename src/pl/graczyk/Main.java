@@ -75,8 +75,6 @@ public class Main {
             l.add(i,createFlashcard());
             i++;
         }
-        FlashcardSet fcs = new FlashcardSet(setName,l );
-        System.out.println(fcs);
         FlashcardSets.put(setName, l);
     }
 
