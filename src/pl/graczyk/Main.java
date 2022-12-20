@@ -3,12 +3,12 @@ package pl.graczyk;
 import java.util.*;
 
 public class Main {
+    private static Scanner scan = new Scanner(System.in);
     private static Map<String, List<Flashcard> > FlashcardSets = new HashMap<>();
     public static void main(String[] args) {
 
         createTest();
         menu();
-
 
     }
 
@@ -49,6 +49,11 @@ public class Main {
                 Main.menu();
             } else {
                 System.out.println("Wybrano: " + chosenSet + FlashcardSets.get(chosenSet));
+                showGames();
+                int chosenGame = scn.nextInt();
+                    if (chosenGame == Games.TEST.getChoice()) {
+                        testGame( FlashcardSets.get(chosenSet));
+                    }
             }
 
         }
@@ -56,6 +61,41 @@ public class Main {
             scn.close();
         }
 
+    }
+
+    private static void testGame(List<Flashcard> n) {
+        Random rand = new Random();
+        int points = 0;
+        for (int i = points; i < n.size(); i++) {
+            Flashcard question = n.get(rand.nextInt(n.size()));
+            String definition = question.getText();
+            System.out.println(definition);
+            System.out.println("odpowiedzi");
+            List answers = new ArrayList();
+            answers.add(question.getMeaning());
+            do {
+                Flashcard answer = n.get(rand.nextInt(n.size()));
+                if (!answers.contains(answer.getMeaning()))
+                    answers.add(answer.getMeaning());
+            } while (answers.size() <= 3);
+            Collections.shuffle(answers);
+            for (int j = 0; j < answers.size(); j++) {
+                System.out.print(j);
+                System.out.println(answers.get(j) + "   ");
+            }
+            int usersAnswer = scan.nextInt();
+            if (usersAnswer == answers.indexOf(question.getMeaning())) {
+                System.out.println("BRAWO!");
+                points +=1;
+            }
+        }
+    }
+
+    private static void showGames() {
+        System.out.println(Games.TEST + " - " + Games.TEST.getChoice());
+        System.out.println(Games.ANAGRAM + " - " + Games.ANAGRAM.getChoice());
+        System.out.println(Games.WPISYWANIE_POPRAWNEJ_ODPOWIEDZI + " - " + Games.WPISYWANIE_POPRAWNEJ_ODPOWIEDZI.getChoice());
+        System.out.println(Games.LUKI + " - " + Games.LUKI.getChoice());
     }
 
     private static void showAllSets(Map FlashcardSet) {

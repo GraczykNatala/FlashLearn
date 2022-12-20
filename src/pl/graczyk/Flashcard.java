@@ -1,5 +1,6 @@
 package pl.graczyk;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Flashcard {
@@ -46,6 +47,19 @@ public class Flashcard {
         String meaning = scn.next();
         Flashcard fc = new Flashcard(text, meaning);
         return fc;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flashcard flashcard = (Flashcard) o;
+        return Objects.equals(text, flashcard.text) && Objects.equals(meaning, flashcard.meaning);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(text, meaning);
     }
 }
 
