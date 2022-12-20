@@ -30,11 +30,10 @@ public class Main {
     private static void menu() {
         System.out.println(Menu.STWÓRZ_NOWY_ZESTAW + " - " + Menu.STWÓRZ_NOWY_ZESTAW.getChoice());
         System.out.println(Menu.PRZEGLĄDAJ_ZESTAWY + " - " + Menu.PRZEGLĄDAJ_ZESTAWY.getChoice());
-        System.out.println(Menu.WYJDŹ + "- " + Menu.WYJDŹ.getChoice());
+        System.out.println(Menu.WYJDŹ + " - " + Menu.WYJDŹ.getChoice());
         Scanner scn = new Scanner(System.in);
         int choice = scn.nextInt();
         if (choice == Menu.STWÓRZ_NOWY_ZESTAW.getChoice() ) {
-
 
             createSet();
             Main.menu();
@@ -45,12 +44,13 @@ public class Main {
             scn.nextLine();
             System.out.println("Wybierz zestaw");
             String chosenSet = scn.next();
-            if (FlashcardSets.containsKey(chosenSet)) {
-                System.out.println("Wybrano: " + chosenSet + FlashcardSets.get(chosenSet));
+            if (!FlashcardSets.containsKey(chosenSet))
+            {System.out.println("Nie ma takiego zestawu");
+                Main.menu();
             } else {
-                System.out.println("Nie ma takiego zestawu");
+                System.out.println("Wybrano: " + chosenSet + FlashcardSets.get(chosenSet));
             }
-            Main.menu();
+
         }
         else if (choice == Menu.WYJDŹ.getChoice()) {
             scn.close();
@@ -59,13 +59,11 @@ public class Main {
     }
 
     private static void showAllSets(Map FlashcardSet) {
-        System.out.println(FlashcardSets.size());
             System.out.println(FlashcardSets.keySet());
 
     }
 
     private static void createSet() {
-
         Scanner scn = new Scanner(System.in);
         System.out.println("Podaj nazwę nowego zestawu");
         String setName = scn.next();

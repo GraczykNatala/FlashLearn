@@ -1,13 +1,15 @@
 package pl.graczyk;
 
-public enum Menu {
-    STWÓRZ_NOWY_ZESTAW(1),
-    PRZEGLĄDAJ_ZESTAWY(2),
-    WYJDŹ(3);
+public enum Games {
+    TEST(1),
+    ANAGRAM(2),
+    WPISYWANIE_POPRAWNEJ_ODPOWIEDZI(3),
+    LUKI(4);
 
     private int choice;
 
-    Menu(int choice) {
+
+    Games(int choice) {
         this.choice = choice;
     }
 
@@ -19,7 +21,4 @@ public enum Menu {
     public String toString() {
         return super.toString().toLowerCase().replace("_", " ");
     }
-
 }
-
-
