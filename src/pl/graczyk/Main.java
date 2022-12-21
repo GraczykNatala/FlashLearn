@@ -13,25 +13,11 @@ public class Main {
     }
 
 
-
-
-    static List<WinningStreak> createWinningStreak(List<Flashcard> fcList) {
-        List<WinningStreak> setWinningStreak = new ArrayList<>(fcList.size());
-        for (Flashcard o : fcList) {
-            String question = o.getText();
-            WinningStreak ws = new WinningStreak(question, 3);
-            setWinningStreak.add(ws);
-    }
-
-    return setWinningStreak;
-    }
-
     private static void menu() {
         System.out.println(Menu.STWÓRZ_NOWY_ZESTAW + " - " + Menu.STWÓRZ_NOWY_ZESTAW.getChoice());
         System.out.println(Menu.PRZEGLĄDAJ_ZESTAWY + " - " + Menu.PRZEGLĄDAJ_ZESTAWY.getChoice());
         System.out.println(Menu.WYJDŹ + " - " + Menu.WYJDŹ.getChoice());
-        Scanner scn = new Scanner(System.in);
-        int choice = scn.nextInt();
+        int choice = scan.nextInt();
         if (choice == Menu.STWÓRZ_NOWY_ZESTAW.getChoice() ) {
 
             createSet();
@@ -40,16 +26,16 @@ public class Main {
         else if (choice == Menu.PRZEGLĄDAJ_ZESTAWY.getChoice()) {
             System.out.println("Twoje zasoby");
             showAllSets();
-            scn.nextLine();
+            scan.nextLine();
             System.out.println("Wybierz zestaw");
-            String chosenSet = scn.next();
+            String chosenSet = scan.next();
             if (!FlashcardSets.containsKey(chosenSet))
             {System.out.println("Nie ma takiego zestawu");
                 Main.menu();
             } else {
                 System.out.println("Wybrano: " + chosenSet + FlashcardSets.get(chosenSet));
                 showGames();
-                int chosenGame = scn.nextInt();
+                int chosenGame = scan.nextInt();
                     if (chosenGame == Games.TEST.getChoice()) {
                         testGame( FlashcardSets.get(chosenSet));
                     }
@@ -57,7 +43,7 @@ public class Main {
 
         }
         else if (choice == Menu.WYJDŹ.getChoice()) {
-            scn.close();
+            scan.close();
         }
 
     }
@@ -106,19 +92,19 @@ public class Main {
     }
 
     private static void createSet() {
-        Scanner scn = new Scanner(System.in);
         System.out.println("Podaj nazwę nowego zestawu");
-        String setName = scn.next();
+        String setName = scan.next();
         System.out.println("Stworzono zestaw: " + setName );
         System.out.println("Ile elementów chcesz dodać?");
-        int amount = scn.nextInt();
+        int amount = scan.nextInt();
         List<Flashcard> FlachcardList = new ArrayList<>();
         for (int i = 0; i < amount; ) {
             Flashcard fc = new Flashcard();
             FlachcardList.add(i,fc.createFlashcard());
             i++;
         }
-       createWinningStreak(FlachcardList);
+        WinningStreak ws = new WinningStreak();
+        ws.createWinningStreak(FlachcardList);
         FlashcardSets.put(setName, FlachcardList);
 
     }

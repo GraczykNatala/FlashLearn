@@ -17,7 +17,9 @@ public class ExampleSet {
         Flashcard t9 = new Flashcard("Check in", "zameldować się");
         List<Flashcard> testFC =  List.of(t1,t2,t3,t4,t5,t6,t7,t8,t9);
         Main.FlashcardSets.put("testOne", testFC);
-        Main.createWinningStreak(testFC);
+        WinningStreak ws = new WinningStreak();
+        ws.createWinningStreak(testFC);
+
 
     return testFC;}
 }
