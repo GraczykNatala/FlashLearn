@@ -45,7 +45,7 @@ private    int streak;
             setWinningStreak.add(ws);
         }
 
-        return setWinningStreak;
-    }
+    return setWinningStreak;}
+
 }
 

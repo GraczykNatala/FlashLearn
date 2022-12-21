@@ -20,6 +20,14 @@ public enum Menu {
         return super.toString().toLowerCase().replace("_", " ");
     }
 
+    Menu() {}
+
+    public static void showMenu() {
+        System.out.println(Menu.STWÓRZ_NOWY_ZESTAW + " - " + Menu.STWÓRZ_NOWY_ZESTAW.getChoice());
+        System.out.println(Menu.PRZEGLĄDAJ_ZESTAWY + " - " + Menu.PRZEGLĄDAJ_ZESTAWY.getChoice());
+        System.out.println(Menu.WYJDŹ + " - " + Menu.WYJDŹ.getChoice());
+    }
+
 }
 
 
