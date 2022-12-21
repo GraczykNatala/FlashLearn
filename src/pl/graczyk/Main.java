@@ -66,6 +66,7 @@ public class Main {
     private static void testGame(List<Flashcard> n) {
         Random rand = new Random();
         int points = 0;
+
         for (int i = points; i < n.size(); i++) {
             Flashcard question = n.get(rand.nextInt(n.size()));
             String definition = question.getText();
@@ -90,6 +91,8 @@ public class Main {
             }
         }
     }
+
+
 
     private static void showGames() {
         System.out.println(Games.TEST + " - " + Games.TEST.getChoice());
