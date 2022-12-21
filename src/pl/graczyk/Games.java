@@ -84,8 +84,24 @@ public enum GamesMenu {
            }
        }
        while (streak);
-
-
     }
+    public static void typeTheWordGame(List<Flashcard> n) {
+        boolean streak = true;
+        do {
+            Flashcard question = n.get(rand.nextInt(n.size()));
+            String definition = question.getText();
+            System.out.println(definition);
+            String answer = question.getMeaning();
+            String usersAnswer = scn.nextLine();
+            if (usersAnswer.equals(answer)) {
+                System.out.println("Brawo!");
+            } else {
+                System.out.println("przegrana");
+                streak = false;
+            }
+        }
+        while (streak);
+        }
+
 }
 

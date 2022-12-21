@@ -41,6 +41,9 @@ public class Main {
                 if (chosenGame == GamesMenu.ANAGRAM.getChoice()) {
                     Games.anagramGame( FlashcardSets.get(chosenSet));
                 }
+                if (chosenGame == GamesMenu.WPISYWANIE_POPRAWNEJ_ODPOWIEDZI.getChoice()) {
+                    Games.typeTheWordGame( FlashcardSets.get(chosenSet));
+                }
             }
 
         }
