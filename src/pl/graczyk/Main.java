@@ -1,13 +1,14 @@
 package pl.graczyk;
 
+import pl.graczyk.games.*;
+
 import java.util.*;
 
-import static pl.graczyk.Games.*;
 import static pl.graczyk.Menu.showMenu;
 
 public class Main {
     private static final Scanner scan = new Scanner(System.in);
-    static final Map<String, List<Flashcard> > FlashcardSets = new HashMap<>();
+    public static final Map<String, List<Flashcard> > FlashcardSets = new HashMap<>();
     public static void main(String[] args) {
 
         ExampleSet.createExampleSet();
@@ -33,16 +34,18 @@ public class Main {
                 Main.menu();
             } else {
                 System.out.println("Wybrano: " + chosenSet);
-                Games.GamesMenu.showGames();
+
+                GamesMenu.showGames();
                 int chosenGame = scan.nextInt();
-                    if (chosenGame == Games.GamesMenu.TEST.getChoice()) {
-                        Games.testGame( FlashcardSets.get(chosenSet));
+                    if (chosenGame == GamesMenu.TEST.getChoice()) {
+                        Game test = new TestGame().runGame(FlashcardSets.get(chosenSet));
+
                     }
                 if (chosenGame == GamesMenu.ANAGRAM.getChoice()) {
-                    Games.anagramGame( FlashcardSets.get(chosenSet));
+                    Game anagram = new AnagramGame().runGame(FlashcardSets.get(chosenSet));
                 }
                 if (chosenGame == GamesMenu.WPISYWANIE_POPRAWNEJ_ODPOWIEDZI.getChoice()) {
-                    Games.typeTheWordGame( FlashcardSets.get(chosenSet));
+                    Game type = new TypeTheWordGame().runGame(FlashcardSets.get(chosenSet));
                 }
             }
 
