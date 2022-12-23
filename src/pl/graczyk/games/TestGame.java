@@ -10,7 +10,7 @@ public class TestGame implements Game {
 
 
     @Override
-    public Game runGame(List<Flashcard> n) {
+    public void runGame(List<Flashcard> n) {
         boolean streak = true;
         do {
             Flashcard question = currentQuestion(n);
@@ -34,7 +34,7 @@ public class TestGame implements Game {
             streak = checkAnswer(String.valueOf(usersAnswer), String.valueOf(answerNum + 1), streak);
         } while (streak);
 
-        return null;
+
     }
 
     @Override

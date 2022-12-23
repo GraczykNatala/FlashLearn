@@ -6,9 +6,9 @@ import java.util.*;
 
 public interface Game {
    Random rand = new Random();
-   Scanner scn = new Scanner(System.in);
+    Scanner scn = new Scanner(System.in);
 
-     Game runGame(List<Flashcard> n);
+     void runGame(List<Flashcard> n) throws InputMismatchException;
 
 
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AnagramGame implements Game {
     @Override
-    public Game runGame(List<Flashcard> n) {
+    public void runGame(List<Flashcard> n) {
         boolean streak = true;
         do {
             Flashcard question = currentQuestion(n);
@@ -22,7 +22,7 @@ public class AnagramGame implements Game {
 
         }
         while (streak);
-        return null;
+
     }
 
     @Override

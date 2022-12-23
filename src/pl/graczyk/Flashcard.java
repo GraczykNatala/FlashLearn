@@ -1,9 +1,10 @@
 package pl.graczyk;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Flashcard {
+public class Flashcard implements Serializable {
     private String text;
     private String meaning;
 
